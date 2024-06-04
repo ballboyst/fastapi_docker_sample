@@ -4,6 +4,6 @@ from datetime import date
 
 class Get_tasks(BaseModel):
     id: int
-    task_name: str
+    title: str
     done: bool
     deadline: date

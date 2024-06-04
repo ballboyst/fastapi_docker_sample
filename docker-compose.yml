@@ -15,29 +15,27 @@ services:
       '
     environment:
       DATABASE_URL: mysql://mysql:mysql@localhost:3306/mysql
-      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DB: mysql
       MYSQL_USER: mysql
       MYSQL_PASSWORD: mysql
+    depends_on:
+      - test_db
 
 
-# volumes:
-#   mysql-data: 
+  test_db:
+    container_name: fastapi_docker_db
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DB: "todo"
+      MYSQL_USER: "mysql"
+      MYSQL_PASSWORD: "mysql"
+      MYSQL_CHARACTER_SET_SERVER: 'utf8mb4'
+      MYSQL_COLLATION_SERVER: 'utf8mb4_unicode_ci'
+    image: mysql:8.0
+    restart: unless-stopped
+    volumes:
+      - mysql-data:/var/lib/mysql
 
-
-#   test_db:
-#     container_name: fastapi_docker_db
-#     image: MySQL:latest
-#     platform: linux/x86_64
-#     restart: unless-stopped
-#     volumes: 
-#       - mysql_data:var/lib/mysql
-#     environment:
-#       MYSQL_ROOT_PASSWORD: mysql
-#       MYSQL_DB: mysql
-#       MYSQL_USER: mysql
-#       MYSQL_PASSWORD: mysql
-#       MYSQL_CHARACTER_SET_SERVER: 'utf8mb4'
-#       MYSQL_COLLATION_SERVER: 'utf8mb4_unicode_ci'
-#     ports: 
-#       - 3306:3306
+volumes:
+  mysql-data:
