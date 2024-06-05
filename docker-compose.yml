@@ -24,14 +24,13 @@ services:
 
 
   test_db:
-    container_name: fastapi_docker_db
+    container_name: ${MYSQL_HOST}
     environment:
-      MYSQL_ROOT_PASSWORD: "root"
-      MYSQL_DB: "todo"
-      MYSQL_USER: "mysql"
-      MYSQL_PASSWORD: "mysql"
-      MYSQL_CHARACTER_SET_SERVER: 'utf8mb4'
-      MYSQL_COLLATION_SERVER: 'utf8mb4_unicode_ci'
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - "TZ=Asia/Tokyo" # タイムゾーンを日本時刻に設定
     image: mysql:8.0
     restart: unless-stopped
     volumes:

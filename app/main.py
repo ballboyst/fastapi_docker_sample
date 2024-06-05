@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from routers import tasks, users
-from models.database import engine, Sessionlocal
+from database import engine, Sessionlocal
 
 
 app = FastAPI()
