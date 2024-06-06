@@ -2,23 +2,14 @@ from pydantic import BaseModel
 from datetime import date
 
 
-class TaskBase(BaseModel):
+class TaskCreate(BaseModel):
     title: str
+    deadline: date
 
 
-class TaskGet(TaskBase):
+class UpdateTask(TaskCreate):
     id: int
     done: bool
-    deadline: date
-
-
-class TaskCreate(TaskBase):
-    deadline: date
-
-
-class UpdateTask(TaskBase):
-    done : bool
-    deadline: date
 
 
 class DeleteTask(BaseModel):
