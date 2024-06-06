@@ -4,7 +4,8 @@ WORKDIR /app
 
 COPY /app /app/
 
-RUN pip install sqlalchemy pymysql alembic mysqlclient
+RUN pip install sqlalchemy pymysql alembic mysqlclient cryptography
+
 
 
 

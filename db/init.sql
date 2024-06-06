@@ -11,5 +11,7 @@ CREATE TABLE tasks(
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255),
     done BOOL,
-    deadline DATE
+    deadline DATE,
+    created_at DATETIME,
+    updated_at DATETIME
 );
