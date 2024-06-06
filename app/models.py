@@ -2,9 +2,9 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Date, DateTime, Boolean
 
 
-Base = declarative_baseS
+Base = declarative_base()
 
-class users(Base):
+class Users(Base):
     __tablename__ = "users"
     id = Column(Integer, primary_key=True)
     user_name = Column(String)
@@ -14,7 +14,7 @@ class users(Base):
     updated_at = Column(DateTime)
 
 
-class tasks(Base):
+class Tasks(Base):
     __tablename__ = "tasks"
     id = Column(Integer, primary_key = True)
     title = Column(String)
