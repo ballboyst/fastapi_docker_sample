@@ -23,3 +23,4 @@ class Tasks(Base):
     deadline = Column(Date)
     created_at = Column(DateTime)
     updated_at = Column(DateTime)
+    user_id = Column(Integer, ForeignKey(Users.id))
