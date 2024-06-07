@@ -19,11 +19,8 @@ FastAPI docker APIのサンプル
 |説明|メソッド|URI|
 |----|----|----|
 |全TODOデータを取得|GET|/tasks|
-|----|----|----|
 |TODOデータの新規作成。| POST|/tasks|
-|----|----|----|
 |指定したTODOデータの削除|DELETE|/task{id}|
-|----|----|----|
 |指定したTODOデータの更新|PATCH|/task{id}|
 
 
