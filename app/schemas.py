@@ -8,7 +8,6 @@ class TaskCreate(BaseModel):
 
 
 class UpdateTask(TaskCreate):
-    id: int
     done: bool
 
 

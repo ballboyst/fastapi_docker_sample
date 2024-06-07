@@ -3,10 +3,11 @@ from sqlalchemy.orm import Session
 from datetime import datetime
 import schemas, database, models
 
+
 app = FastAPI()
-# @app.get("/")
-# async def root():
-#     return {"message":"Hello World"}
+@app.get("/")
+async def root():
+    return {"message":"Hello World"}
 
 
 @app.post("/tasks")
@@ -35,5 +36,22 @@ def get_tasks(db: Session=Depends(database.get_db)):
         task_list.append(task)
 
     return task_list
-# app.include_router(tasks.router)
-# app.include_router(users.router)
+
+
+@app.delete("/task{id}")
+def delete_task(task_id:int, db:Session=Depends(database.get_db)):
+    task = db.query(models.Tasks).filter(models.Tasks.id == task_id).first()
+    print(task)
+    db.delete(task)
+    db.commit()
+
+
+@app.patch("/task{id}")
+def update_task(id:int, task:schemas.UpdateTask, db:Session=Depends(database.get_db)):
+    update_task = db.query(models.Tasks).get(id)
+    print(update_task)
+    update_task.title=task.title
+    update_task.done=task.done
+    update_task.deadline=task.deadline
+    update_task.updated_at=datetime.now()
+    db.commit()
