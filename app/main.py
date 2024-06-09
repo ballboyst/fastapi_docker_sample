@@ -1,7 +1,9 @@
 from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
 from datetime import datetime
-import schemas, database, models
+import schemas
+import database
+import models
 
 
 app = FastAPI()
