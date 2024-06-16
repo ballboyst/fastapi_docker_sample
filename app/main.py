@@ -39,14 +39,14 @@ def get_tasks(db: Session=Depends(database.get_db)):
     return task_list
 
 
-@app.delete("/task{id}")
+@app.delete("/task/{id}")
 def delete_task(task_id:int, db:Session=Depends(database.get_db)):
     task = db.query(models.Tasks).filter(models.Tasks.id == task_id).first()
     db.delete(task)
     db.commit()
 
 
-@app.patch("/task{id}")
+@app.patch("/task/{id}")
 def update_task(id:int, task:schemas.UpdateTask, db:Session=Depends(database.get_db)):
     update_task = db.query(models.Tasks).get(id)
     update_task.title=task.title
